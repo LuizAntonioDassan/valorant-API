@@ -108,7 +108,7 @@ class agentPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.network(agent['abilities'][i]['displayIcon'],
-                  width: 80,
+                  width: 80, fit: BoxFit.contain,
                   color: Colors.green,),
                 Text(agent['abilities'][i]['displayName'],
                   style: TextStyle(fontSize: 16),),
