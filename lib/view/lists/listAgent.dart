@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:valorant/model/api.dart';
-import 'package:valorant/view/agentPage.dart';
+import 'package:valorant/view/pages/agentPage.dart';
 import 'package:http/http.dart' as http;
+import 'package:valorant/view/styles/textstyle/textStyle.dart';
 
 
 class listAgent extends StatefulWidget {
@@ -14,7 +15,6 @@ class listAgent extends StatefulWidget {
 }
 
 class _listAgentState extends State<listAgent> with SingleTickerProviderStateMixin {
-  
   @override
   Widget build(BuildContext context) {
       return FutureBuilder(
@@ -27,8 +27,9 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
           }
 
           if(snapshot.hasData){
+            List<dynamic> numAgents = snapshot.data!['data'];
             return ListView.builder(
-                itemCount: 21,
+                itemCount: numAgents.length,
                 itemBuilder: (context, index){
                   if(snapshot.data!['data'][index]['isPlayableCharacter'] == true){
                     var name = snapshot.data!['data'][index]['displayName'];
@@ -38,8 +39,7 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
                       },
-                      subtitle: Text(name,style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-                        textAlign: TextAlign.center,),
+                      subtitle: subtitleStyle(name),
                       //função Image.network para transformar uma String em Image;
                       title: Image.network(icon,height: 200,),
                       onLongPress: _preview,
@@ -59,6 +59,7 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
     void _preview(){
 
     }
+
     Future<Map> _getData() async {
       http.Response response = await http.get(Uri.parse("https://valorant-api.com/v1/agents"));
       //get retorna um tipo Response
@@ -70,3 +71,4 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
       //print(response.body);
   }
 }
+

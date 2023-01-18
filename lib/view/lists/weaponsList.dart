@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:valorant/view/weaponPage.dart';
+import 'package:valorant/view/pages/weaponPage.dart';
+import 'package:valorant/view/styles/textstyle/textStyle.dart';
 
 class weaponsList extends StatefulWidget {
   const weaponsList({Key? key}) : super(key: key);
@@ -32,8 +33,7 @@ class _weaponsListState extends State<weaponsList> with SingleTickerProviderStat
                   var weapon = snapshot.data!['data'][index];
                   return ListTile(
                     title: Image.network(icon, height: 200,),
-                    subtitle: Text(name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-                      textAlign: TextAlign.center,),
+                    subtitle: subtitleStyle(name),
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context) => weaponPage(weapon: weapon)));
                     },

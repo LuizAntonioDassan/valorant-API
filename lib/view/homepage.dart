@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:valorant/view/agentPage.dart';
-import 'package:valorant/view/listAgent.dart';
-import 'package:valorant/view/weaponsList.dart';
+import 'package:valorant/view/pages/agentPage.dart';
+import 'package:valorant/view/lists/listAgent.dart';
+import 'package:valorant/view/lists/weaponsList.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);

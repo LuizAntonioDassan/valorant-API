@@ -53,14 +53,19 @@ class agentPage extends StatelessWidget {
                   fontWeight: FontWeight.w500
               ),),
               Divider(thickness: 4,),
-              Container(
-                child: Column(
-                  children: [
-                    for(var i in list)
-                      abilities(i),
-                  ],
-                ),
-              )
+              ...list.map((e) => abilities(e)).toList()
+              // .map para pegar cada item da lista / (e) para referenciar o indice do item
+              // "..." pega cada item de uma lista e coloca em outra.
+
+
+              // Container(
+              //   child: Column(
+              //     children: [
+              //       for(var i in list)
+              //         abilities(i),
+              //     ],
+              //   ),
+              // )
 
             ],
           ),
