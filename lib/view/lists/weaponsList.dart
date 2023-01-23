@@ -42,7 +42,7 @@ class _weaponsListState extends State<weaponsList> with SingleTickerProviderStat
             );
           }
           else{
-            return Container();
+            return CircularProgressIndicator();
           }
         });
   }

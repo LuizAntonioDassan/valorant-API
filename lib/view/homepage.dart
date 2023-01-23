@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:valorant/view/lists/mapList.dart';
 import 'package:valorant/view/pages/agentPage.dart';
 import 'package:valorant/view/lists/listAgent.dart';
 import 'package:valorant/view/lists/weaponsList.dart';
@@ -30,7 +31,6 @@ class _homePageState extends State<homePage> with SingleTickerProviderStateMixin
               Tab(icon: Icon(Icons.home),),
               Tab(icon: Icon(Icons.star),),
               Tab(icon: Icon(Icons.chair),),
-              Tab(icon: Icon(Icons.wifi),)
             ],
           ),
         ),
@@ -38,8 +38,7 @@ class _homePageState extends State<homePage> with SingleTickerProviderStateMixin
           children: [
             Center(child: listAgent(),),
             Center(child: weaponsList(),),
-            Center(child: Text('Tab 3'),),
-            Center(child: Text('Tab 4'),),
+            Center(child: mapList(),),
           ],
         )
       ),

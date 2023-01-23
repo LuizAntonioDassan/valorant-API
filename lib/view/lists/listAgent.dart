@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:valorant/view/styles/textstyle/textStyle.dart';
 
 
+
 class listAgent extends StatefulWidget {
   const listAgent({Key? key}) : super(key: key);
 
@@ -15,6 +16,9 @@ class listAgent extends StatefulWidget {
 }
 
 class _listAgentState extends State<listAgent> with SingleTickerProviderStateMixin {
+
+  Color verde = const Color(0xff008000);
+
   @override
   Widget build(BuildContext context) {
       return FutureBuilder(
@@ -37,11 +41,14 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
                     var agent = snapshot.data!['data'][index];
                     return ListTile(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
                       },
                       subtitle: subtitleStyle(name),
                       //função Image.network para transformar uma String em Image;
-                      title: Image.network(icon,height: 200,),
+                      title: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(200)),
+                        child: Image.network(icon,height: 250, fit: BoxFit.cover,),
+                      ),
                       onLongPress: _preview,
                     );
                   }else{
@@ -56,8 +63,10 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
         },
       );
     }
-    void _preview(){
-
+    Widget _preview(){
+      return AlertDialog(
+        title: Text("teste"),
+      );
     }
 
     Future<Map> _getData() async {

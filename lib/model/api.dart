@@ -1,22 +1,15 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-
 class Api{
-  getData() async{
+  Future<Map> _getData(String url) async {
+    http.Response response = await http.get(Uri.parse(url));
+    //get retorna um tipo Response
+    var json = jsonDecode(response.body);
+    //usa a função JsonDecode para converter no tipo Map para usar no Dart
+    //var agents = valorantAgents.fromMap(json);
+    return json;
 
-    http.Response response = await http.get(Uri.parse("https://valorant-api.com/v1/agents"));
-    return decode(response);
+    //print(response.body);
   }
-
-  decode(http.Response response){
-    if(response.statusCode == 200){
-      var decoded = json.decode(response.body);
-      return decoded;
-    }
-    else{
-      throw Exception("Failed");
-    }
-  }
-
 }

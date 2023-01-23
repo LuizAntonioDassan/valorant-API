@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class agentPage extends StatelessWidget {
@@ -53,7 +51,12 @@ class agentPage extends StatelessWidget {
                   fontWeight: FontWeight.w500
               ),),
               Divider(thickness: 4,),
-              ...list.map((e) => abilities(e)).toList()
+              Text("Tap to see", style: TextStyle(fontWeight: FontWeight.w800),),
+              Row(
+                children: [
+                  ...list.map((e) => abilities(e, context)).toList()
+                ],
+              )
               // .map para pegar cada item da lista / (e) para referenciar o indice do item
               // "..." pega cada item de uma lista e coloca em outra.
 
@@ -87,48 +90,46 @@ class agentPage extends StatelessWidget {
       return Container();
     }
   }
-  /*
-  * Row(
-                children: [
-                  Column(
-                    children: [
-                      Image.network(agent['abilities'][0]['displayIcon'], height: 60, color: Colors.green,),
-                      Text(agent['abilities'][0]['displayName'],style: TextStyle(fontSize: 16),),
-                    ],
-                  ),
-                  Expanded(child: Text(agent['abilities'][0]['description'],))
-                ],
-                * )
-  *  */
 
-  Widget abilities(int i){
-    print(agent['abilities']);
-
-    if(agent['abilities'][i] != null) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.network(agent['abilities'][i]['displayIcon'],
+  Widget abilities(int i, BuildContext context){
+    if(agent['abilities'][i] != null){
+      return Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: (){
+                  print("Entrou");
+                  showDialog(context: context,
+                      builder: (context){
+                        return AlertDialog(
+                          title: Text(agent['abilities'][i]['displayName']),
+                          content: Text(agent['abilities'][i]['description'],
+                            style: TextStyle(fontSize: 20),),
+                        );
+                      });
+                },
+                child:  Image.network(agent['abilities'][i]['displayIcon'],
                   width: 80, fit: BoxFit.contain,
-                  color: Colors.green,),
-                Text(agent['abilities'][i]['displayName'],
-                  style: TextStyle(fontSize: 16),),
-              ],
-            ),
-            VerticalDivider(thickness: 2,),
-            Expanded(child: Text(agent['abilities'][i]['description'],
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),))
-          ],
+                  color: Colors.green,
+                ),
+              ),
+              SizedBox(height: 4,),
+              Text(agent['abilities'][i]['displayName'],
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }
     else{
       return Container();
     }
-    return Container();
   }
+
 }
