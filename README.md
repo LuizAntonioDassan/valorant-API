@@ -23,3 +23,5 @@
 
 
 *Aplicativo feito para consumir a API do valorant para fins educacionais*
+
+<img src="https://avatars.githubusercontent.com/u/94642889?s=400&u=0eb7ed4320f97e8a4dbee4a6f8ae1875a495ff52&v=4" width=115><br><sub>Luiz Antonio Dassan Neto </sub>
