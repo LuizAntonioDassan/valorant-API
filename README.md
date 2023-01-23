@@ -1,8 +1,5 @@
 <h1 align = "center"> Valorant Basics </h1>
 
-*Aplicativo feito para consumir a API do valorant para fins educacionais*
-
-
 <h3> Acompanhe os Agentes do Jogo </h3>
 
 ![agents](https://user-images.githubusercontent.com/94642889/214122211-74ded64f-38a4-4457-926e-130810c4f399.png)
@@ -23,3 +20,6 @@
 
 ![mapas](https://user-images.githubusercontent.com/94642889/214122397-c0b693cc-3c6a-491e-b6ed-99756d3b527c.png)
 
+
+
+*Aplicativo feito para consumir a API do valorant para fins educacionais*
