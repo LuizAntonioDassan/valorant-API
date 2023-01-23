@@ -9,14 +9,14 @@ class dataAgent {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['status'] = status;
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
@@ -89,46 +89,46 @@ class Data {
     isPlayableCharacter = json['isPlayableCharacter'];
     isAvailableForTest = json['isAvailableForTest'];
     isBaseContent = json['isBaseContent'];
-    role = json['role'] != null ? new Role.fromJson(json['role']) : null;
+    role = json['role'] != null ? Role.fromJson(json['role']) : null;
     if (json['abilities'] != null) {
       abilities = <Abilities>[];
       json['abilities'].forEach((v) {
-        abilities!.add(new Abilities.fromJson(v));
+        abilities!.add(Abilities.fromJson(v));
       });
     }
     voiceLine = json['voiceLine'] != null
-        ? new VoiceLine.fromJson(json['voiceLine'])
+        ? VoiceLine.fromJson(json['voiceLine'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['uuid'] = this.uuid;
-    data['displayName'] = this.displayName;
-    data['description'] = this.description;
-    data['developerName'] = this.developerName;
-    data['characterTags'] = this.characterTags;
-    data['displayIcon'] = this.displayIcon;
-    data['displayIconSmall'] = this.displayIconSmall;
-    data['bustPortrait'] = this.bustPortrait;
-    data['fullPortrait'] = this.fullPortrait;
-    data['fullPortraitV2'] = this.fullPortraitV2;
-    data['killfeedPortrait'] = this.killfeedPortrait;
-    data['background'] = this.background;
-    data['backgroundGradientColors'] = this.backgroundGradientColors;
-    data['assetPath'] = this.assetPath;
-    data['isFullPortraitRightFacing'] = this.isFullPortraitRightFacing;
-    data['isPlayableCharacter'] = this.isPlayableCharacter;
-    data['isAvailableForTest'] = this.isAvailableForTest;
-    data['isBaseContent'] = this.isBaseContent;
-    if (this.role != null) {
-      data['role'] = this.role!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['uuid'] = uuid;
+    data['displayName'] = displayName;
+    data['description'] = description;
+    data['developerName'] = developerName;
+    data['characterTags'] = characterTags;
+    data['displayIcon'] = displayIcon;
+    data['displayIconSmall'] = displayIconSmall;
+    data['bustPortrait'] = bustPortrait;
+    data['fullPortrait'] = fullPortrait;
+    data['fullPortraitV2'] = fullPortraitV2;
+    data['killfeedPortrait'] = killfeedPortrait;
+    data['background'] = background;
+    data['backgroundGradientColors'] = backgroundGradientColors;
+    data['assetPath'] = assetPath;
+    data['isFullPortraitRightFacing'] = isFullPortraitRightFacing;
+    data['isPlayableCharacter'] = isPlayableCharacter;
+    data['isAvailableForTest'] = isAvailableForTest;
+    data['isBaseContent'] = isBaseContent;
+    if (role != null) {
+      data['role'] = role!.toJson();
     }
-    if (this.abilities != null) {
-      data['abilities'] = this.abilities!.map((v) => v.toJson()).toList();
+    if (abilities != null) {
+      data['abilities'] = abilities!.map((v) => v.toJson()).toList();
     }
-    if (this.voiceLine != null) {
-      data['voiceLine'] = this.voiceLine!.toJson();
+    if (voiceLine != null) {
+      data['voiceLine'] = voiceLine!.toJson();
     }
     return data;
   }
@@ -157,12 +157,12 @@ class Role {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['uuid'] = this.uuid;
-    data['displayName'] = this.displayName;
-    data['description'] = this.description;
-    data['displayIcon'] = this.displayIcon;
-    data['assetPath'] = this.assetPath;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['uuid'] = uuid;
+    data['displayName'] = displayName;
+    data['description'] = description;
+    data['displayIcon'] = displayIcon;
+    data['assetPath'] = assetPath;
     return data;
   }
 }
@@ -183,11 +183,11 @@ class Abilities {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['slot'] = this.slot;
-    data['displayName'] = this.displayName;
-    data['description'] = this.description;
-    data['displayIcon'] = this.displayIcon;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['slot'] = slot;
+    data['displayName'] = displayName;
+    data['description'] = description;
+    data['displayIcon'] = displayIcon;
     return data;
   }
 }
@@ -205,17 +205,17 @@ class VoiceLine {
     if (json['mediaList'] != null) {
       mediaList = <MediaList>[];
       json['mediaList'].forEach((v) {
-        mediaList!.add(new MediaList.fromJson(v));
+        mediaList!.add(MediaList.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['minDuration'] = this.minDuration;
-    data['maxDuration'] = this.maxDuration;
-    if (this.mediaList != null) {
-      data['mediaList'] = this.mediaList!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['minDuration'] = minDuration;
+    data['maxDuration'] = maxDuration;
+    if (mediaList != null) {
+      data['mediaList'] = mediaList!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -235,10 +235,10 @@ class MediaList {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['wwise'] = this.wwise;
-    data['wave'] = this.wave;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['wwise'] = wwise;
+    data['wave'] = wave;
     return data;
   }
 }

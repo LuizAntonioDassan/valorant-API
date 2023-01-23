@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:valorant/model/api.dart';
 import 'package:valorant/view/pages/agentPage.dart';
 import 'package:http/http.dart' as http;
 import 'package:valorant/view/styles/textstyle/textStyle.dart';

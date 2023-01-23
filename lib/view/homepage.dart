@@ -1,9 +1,7 @@
-import 'dart:convert';
+
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:valorant/view/lists/mapList.dart';
-import 'package:valorant/view/pages/agentPage.dart';
 import 'package:valorant/view/lists/listAgent.dart';
 import 'package:valorant/view/lists/weaponsList.dart';
 
@@ -20,13 +18,13 @@ class _homePageState extends State<homePage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green,
-          title: Text("Valorant Agentes"),
+          title: const Text("Valorant Agentes"),
           centerTitle: true,
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.home),),
               Tab(icon: Icon(Icons.star),),
@@ -34,7 +32,7 @@ class _homePageState extends State<homePage> with SingleTickerProviderStateMixin
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             Center(child: listAgent(),),
             Center(child: weaponsList(),),

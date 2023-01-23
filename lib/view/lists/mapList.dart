@@ -12,7 +12,6 @@ class mapList extends StatefulWidget {
 }
 
 class _mapListState extends State<mapList> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class _mapListState extends State<mapList> with SingleTickerProviderStateMixin {
 
         if(snapshot.hasData){
           return ListView.builder(
-              itemCount: mapLenght!.length,
+              itemCount: mapLenght.length,
               itemBuilder: (context, index){
                 var icon = snapshot.data!['data'][index]['splash'];
                 var name = snapshot.data!['data'][index]['displayName'];
@@ -36,8 +35,8 @@ class _mapListState extends State<mapList> with SingleTickerProviderStateMixin {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: ListTile(
                       title: ClipRRect(
-                        child: Image.network(icon, width: 200, fit: BoxFit.cover,),
                         borderRadius: BorderRadius.all(Radius.circular(200)),
+                        child: Image.network(icon, width: 200, fit: BoxFit.cover,),
                       ),
                       subtitle: subtitleStyle(name),
                     ),
@@ -47,7 +46,7 @@ class _mapListState extends State<mapList> with SingleTickerProviderStateMixin {
         }
         else{
           return CircularProgressIndicator();
-        };
+        }
     });
 
   }

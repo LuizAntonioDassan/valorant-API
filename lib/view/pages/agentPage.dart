@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class agentPage extends StatelessWidget {
-  Map<String, dynamic> agent;
+  final Map<String, dynamic> agent;
   final List<int> list = [0,1,2,3];
 
   agentPage({Key? key, required this.agent}) : super(key: key);
@@ -78,15 +78,18 @@ class agentPage extends StatelessWidget {
   }
 
   Widget roleColor(){
-    if(agent['role']['displayName'] == "Initiator")
+    if(agent['role']['displayName'] == "Initiator") {
       return Image.network(agent['role']['displayIcon'],color: Colors.blue, height: 60,);
-    if(agent['role']['displayName'] == "Sentinel")
+    }
+    if(agent['role']['displayName'] == "Sentinel") {
       return Image.network(agent['role']['displayIcon'],color: Colors.yellow, height: 60,);
-    if(agent['role']['displayName'] == "Duelist")
+    }
+    if(agent['role']['displayName'] == "Duelist") {
       return Image.network(agent['role']['displayIcon'],color: Colors.red, height: 60,);
-    if(agent['role']['displayName'] == "Controller")
+    }
+    if(agent['role']['displayName'] == "Controller") {
       return Image.network(agent['role']['displayIcon'],color: Colors.purple, height: 60,);
-    else{
+    } else{
       return Container();
     }
   }
@@ -100,7 +103,6 @@ class agentPage extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: (){
-                  print("Entrou");
                   showDialog(context: context,
                       builder: (context){
                         return AlertDialog(

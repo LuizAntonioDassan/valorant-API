@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../styles/textstyle/textStyle.dart';
 
 class weaponPage extends StatelessWidget {
-  Map<String, dynamic> weapon;
+  final Map<String, dynamic> weapon;
 
-  weaponPage({Key? key, required this.weapon}) : super(key: key);
+  const weaponPage({Key? key, required this.weapon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> skins = weapon['skins'];
+    final List<dynamic> skins = weapon['skins'];
 
     return Scaffold(
       appBar: AppBar(
@@ -22,9 +22,9 @@ class weaponPage extends StatelessWidget {
       body: ListView.builder(
           itemCount: skins.length,
           itemBuilder: (context, index){
-            var name = weapon!['skins'][index]['displayName'];
-            var icon = weapon!['skins'][index]['displayIcon'];
-            var contentTier = weapon!['skins'][index]['contentTierUuid'];
+            var name = weapon['skins'][index]['displayName'];
+            var icon = weapon['skins'][index]['displayIcon'];
+            var contentTier = weapon['skins'][index]['contentTierUuid'];
             if(icon != null){
               if(contentTier != null){
                 return ListTile(
