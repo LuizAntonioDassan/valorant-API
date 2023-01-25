@@ -28,7 +28,6 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
               child: Text("Erro"),
             );
           }
-
           if(snapshot.hasData){
             List<dynamic> numAgents = snapshot.data!['data'];
             return ListView.builder(

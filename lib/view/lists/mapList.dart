@@ -18,7 +18,6 @@ class _mapListState extends State<mapList> with SingleTickerProviderStateMixin {
     return FutureBuilder(
       future: _getData(),
       builder: (context, snapshot){
-        List<dynamic> mapLenght = snapshot.data!['data'];
         if(snapshot.hasError){
           return Center(
             child: Text("Erro"),
@@ -26,9 +25,11 @@ class _mapListState extends State<mapList> with SingleTickerProviderStateMixin {
         }
 
         if(snapshot.hasData){
+          List<dynamic> mapLenght = snapshot.data!['data'];
           return ListView.builder(
               itemCount: mapLenght.length,
               itemBuilder: (context, index){
+                print(index);
                 var icon = snapshot.data!['data'][index]['splash'];
                 var name = snapshot.data!['data'][index]['displayName'];
                 return Padding(
