@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:valorant/model/api.dart';
 import 'package:valorant/view/pages/weaponPage.dart';
 import 'package:valorant/view/styles/textstyle/textStyle.dart';
 
@@ -17,7 +18,7 @@ class _weaponsListState extends State<weaponsList> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: _getData(),
+        future: _getWeapon(),
         builder: (context, snapshot){
           if(snapshot.hasError){
             return Center(
@@ -47,14 +48,8 @@ class _weaponsListState extends State<weaponsList> with SingleTickerProviderStat
         });
   }
 
-  Future<Map> _getData() async {
-    http.Response response = await http.get(Uri.parse("https://valorant-api.com/v1/weapons"));
-    //get retorna um tipo Response
-    var json = jsonDecode(response.body);
-    //usa a função JsonDecode para converter no tipo Map para usar no Dart
-    //var agents = valorantAgents.fromMap(json);
-    return json;
-
-    //print(response.body);
+  Future<Map> _getWeapon() async {
+    final value = Api.getData("https://valorant-api.com/v1/weapons");
+    return value;
   }
 }

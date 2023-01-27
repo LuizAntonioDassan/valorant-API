@@ -1,9 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:valorant/view/pages/agentPage.dart';
-import 'package:http/http.dart' as http;
 import 'package:valorant/view/styles/textstyle/textStyle.dart';
+import 'package:valorant/model/api.dart';
 
 
 
@@ -21,7 +19,7 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
       return FutureBuilder(
-        future: _getData(),
+        future: _getAgent(),
         builder: (context, snapshot){
           if(snapshot.hasError){
             return Center(
@@ -37,6 +35,9 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
                     var name = snapshot.data!['data'][index]['displayName'];
                     var icon = snapshot.data!['data'][index]['displayIcon'];
                     var agent = snapshot.data!['data'][index];
+                    var roleAgent = snapshot.data!['data'][index]['role']['displayName'];
+                    var roleDescriptionAgent = snapshot.data!['data'][index]['role']['description'];
+                    var roleIconAgent = snapshot.data!['data'][index]['role']['displayIcon'];
                     return ListTile(
                       onTap: (){
                        Navigator.push(context, MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
@@ -47,7 +48,9 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
                         borderRadius: BorderRadius.all(Radius.circular(200)),
                         child: Image.network(icon,height: 250, fit: BoxFit.cover,),
                       ),
-                      onLongPress: _preview,
+                      onLongPress: (){
+                        _preview(context, roleAgent, roleDescriptionAgent, roleIconAgent);
+                        },
                     );
                   }else{
                     return Container();
@@ -61,21 +64,27 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
         },
       );
     }
-    Widget _preview(){
-      return AlertDialog(
-        title: Text("teste"),
-      );
+    Widget _preview(BuildContext context, String role, String description, String icon){
+      showDialog(context: context,
+          builder: (context){
+            return AlertDialog(
+              title: Row(
+                children: [
+                  Image.network(icon, width: 60, height: 60, fit: BoxFit.contain, color: Colors.redAccent,),
+                  SizedBox(width: 10,),
+                  titleAlertTextStyle(role)
+                ],
+              ),
+              alignment: Alignment.center,
+              content: contentAlertTextStyle(description),
+            );
+          });
+      return Container();
     }
 
-    Future<Map> _getData() async {
-      http.Response response = await http.get(Uri.parse("https://valorant-api.com/v1/agents"));
-      //get retorna um tipo Response
-      var json = jsonDecode(response.body);
-      //usa a função JsonDecode para converter no tipo Map para usar no Dart
-      //var agents = valorantAgents.fromMap(json);
-      return json;
-
-      //print(response.body);
+    Future<Map> _getAgent() async {
+      final value = Api.getData("https://valorant-api.com/v1/agents");
+      return value;
   }
 }
 

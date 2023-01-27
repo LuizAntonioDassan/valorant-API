@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valorant/view/styles/textstyle/textStyle.dart';
 
 class agentPage extends StatelessWidget {
   final Map<String, dynamic> agent;
@@ -23,11 +24,7 @@ class agentPage extends StatelessWidget {
             children: [
               Image.network(agent['fullPortrait']),
               SizedBox(height: 20,),
-              Text(agent['description'],style: TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-                fontWeight: FontWeight.w500
-              ),),
+              contentTextStyle(agent['description']),
               SizedBox(height: 20,),
               Divider(thickness: 4,),
               Padding(
@@ -45,11 +42,7 @@ class agentPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20,),
-              Text(agent['role']['description'],style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500
-              ),),
+              contentTextStyle(agent['role']['description']),
               Divider(thickness: 4,),
               Text("Tap to see", style: TextStyle(fontWeight: FontWeight.w800),),
               Row(

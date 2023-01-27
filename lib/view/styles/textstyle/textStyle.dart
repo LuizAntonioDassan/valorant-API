@@ -14,3 +14,39 @@ Widget subtitleStyle(String Name){
     ),
   );
 }
+
+Widget contentTextStyle(String content){
+  return Text(content, style: const TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.w700,
+    fontSize: 20,
+    letterSpacing: 1
+  ),
+    textAlign: TextAlign.center,
+  );
+}
+
+Widget contentAlertTextStyle(String content){
+  return Text(content,
+    style: const TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w500,
+      fontSize: 20,
+      letterSpacing: 1
+    ),
+    textAlign: TextAlign.center,
+  );
+}
+
+Widget titleAlertTextStyle(String content){
+  return Text(content,
+    style: const TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w600,
+      fontSize: 30,
+      letterSpacing: 1
+    ),
+    textAlign: TextAlign.center,
+  );
+}
+
