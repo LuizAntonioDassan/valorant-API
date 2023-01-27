@@ -21,7 +21,7 @@ class _homePageState extends State<homePage> with SingleTickerProviderStateMixin
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.red,
           title: const Text("Valorant Agentes"),
           centerTitle: true,
           bottom: const TabBar(
@@ -32,12 +32,20 @@ class _homePageState extends State<homePage> with SingleTickerProviderStateMixin
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [
-            Center(child: listAgent(),),
-            Center(child: weaponsList(),),
-            Center(child: mapList(),),
-          ],
+        body: DecoratedBox(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/background.png"),
+              fit: BoxFit.cover
+            )
+          ),
+          child: const TabBarView(
+            children: [
+              Center(child: listAgent(),),
+              Center(child: weaponsList(),),
+              Center(child: mapList(),),
+            ],
+          ),
         )
       ),
     );

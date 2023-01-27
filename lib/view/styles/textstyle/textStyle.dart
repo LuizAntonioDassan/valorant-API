@@ -5,7 +5,7 @@ Widget subtitleStyle(String Name){
     padding: const EdgeInsets.symmetric(vertical: 8),
     child: Text(Name, style:
       const TextStyle(
-        color: Colors.black,
+        color: Colors.white,
         fontWeight: FontWeight.w700,
         fontSize: 30,
         letterSpacing: 2,

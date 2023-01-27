@@ -16,30 +16,38 @@ class weaponPage extends StatelessWidget {
         title: Text(weapon['displayName'], style: TextStyle(
           fontSize: 30,
         ),),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.red,
         centerTitle: true,
       ),
-      body: ListView.builder(
-          itemCount: skins.length,
-          itemBuilder: (context, index){
-            var name = weapon['skins'][index]['displayName'];
-            var icon = weapon['skins'][index]['displayIcon'];
-            var contentTier = weapon['skins'][index]['contentTierUuid'];
-            if(icon != null){
-              if(contentTier != null){
-                return ListTile(
-                  subtitle: subtitleStyle(name),
-                  title: Image.network(icon, height: 200,),
-                );
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/background.png"),
+            fit: BoxFit.cover
+          )
+        ),
+        child: ListView.builder(
+            itemCount: skins.length,
+            itemBuilder: (context, index){
+              var name = weapon['skins'][index]['displayName'];
+              var icon = weapon['skins'][index]['displayIcon'];
+              var contentTier = weapon['skins'][index]['contentTierUuid'];
+              if(icon != null){
+                if(contentTier != null){
+                  return ListTile(
+                    subtitle: subtitleStyle(name),
+                    title: Image.network(icon, height: 200,),
+                  );
+                }
+                else{
+                  return Container();
+                }
               }
               else{
                 return Container();
               }
             }
-            else{
-              return Container();
-            }
-          }
+        ),
       ),
     );
   }
