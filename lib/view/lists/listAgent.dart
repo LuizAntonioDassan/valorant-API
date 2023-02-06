@@ -1,7 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:valorant/view/pages/agentPage.dart';
 import 'package:valorant/view/styles/textstyle/textStyle.dart';
-import 'package:valorant/model/api.dart';
+import 'package:valorant/model/api/api.dart';
 
 
 
@@ -38,25 +39,57 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
                     var roleAgent = snapshot.data!['data'][index]['role']['displayName'];
                     var roleDescriptionAgent = snapshot.data!['data'][index]['role']['description'];
                     var roleIconAgent = snapshot.data!['data'][index]['role']['displayIcon'];
-                    return ListTile(
+                    return GestureDetector(
                       onTap: (){
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
                       },
-                      subtitle: subtitleStyle(name),
-                      //função Image.network para transformar uma String em Image;
-                      title: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(200)),
-                        child: Image.network(icon,height: 250, fit: BoxFit.cover,),
-                      ),
                       onLongPress: (){
                         _preview(context, roleAgent, roleDescriptionAgent, roleIconAgent);
                         },
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(360)),
+                            child: Image(
+                                image: CachedNetworkImageProvider(
+                                  icon,
+                                  maxWidth: 256,
+                                  maxHeight: 256,
+                                )
+                            ),
+                          ),
+                          subtitleStyle(name),
+                        ],
+                      ),
                     );
                   }else{
                     return Container();
                   }
                 });
           }
+          /*
+          ListTile(
+                      onTap: (){
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
+                      },
+                      subtitle: subtitleStyle(name),
+                      //função Image.network para transformar uma String em Image;
+                      title: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(360)),
+                        child: Image(
+                          image: CachedNetworkImageProvider(
+                            icon,
+                            maxHeight: 256,
+                            maxWidth: 256,
+                          ),
+                        )
+                      ),
+                      onLongPress: (){
+                        _preview(context, roleAgent, roleDescriptionAgent, roleIconAgent);
+                        },
+                    );
+           */
 
           return Center(
             child: CircularProgressIndicator(),
@@ -64,6 +97,7 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
         },
       );
     }
+
     Widget _preview(BuildContext context, String role, String description, String icon){
       showDialog(context: context,
           builder: (context){

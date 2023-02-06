@@ -1,9 +1,10 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:valorant/view/styles/textstyle/textStyle.dart';
-import 'package:valorant/model/api.dart';
+import 'package:valorant/model/api/api.dart';
 
 class mapList extends StatefulWidget {
   const mapList({Key? key}) : super(key: key);
@@ -39,7 +40,13 @@ class _mapListState extends State<mapList> with SingleTickerProviderStateMixin {
                     child: ListTile(
                       title: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(200)),
-                        child: Image.network(icon, width: 200, fit: BoxFit.cover,),
+                        child: Image(
+                          image: CachedNetworkImageProvider(
+                            icon,
+                            maxWidth: 360,
+                            maxHeight: 360,
+                          ),
+                        )
                       ),
                       subtitle: subtitleStyle(name),
                     ),

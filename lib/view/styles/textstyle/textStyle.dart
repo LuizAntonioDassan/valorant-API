@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 Widget subtitleStyle(String Name){
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 8),
-    child: Text(Name, style:
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: Text(Name, style:
       const TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w700,
         fontSize: 30,
         letterSpacing: 2,
       ),
-    textAlign: TextAlign.center,
-    ),
-  );
+        textAlign: TextAlign.center,
+      ),
+    );
 }
 
 Widget contentTextStyle(String content){
