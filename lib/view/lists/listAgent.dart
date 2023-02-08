@@ -15,8 +15,6 @@ class listAgent extends StatefulWidget {
 
 class _listAgentState extends State<listAgent> with SingleTickerProviderStateMixin {
 
-  Color verde = const Color(0xff008000);
-
   @override
   Widget build(BuildContext context) {
       return FutureBuilder(
@@ -29,44 +27,47 @@ class _listAgentState extends State<listAgent> with SingleTickerProviderStateMix
           }
           if(snapshot.hasData){
             List<dynamic> numAgents = snapshot.data!['data'];
-            return ListView.builder(
-                itemCount: numAgents.length,
-                itemBuilder: (context, index){
-                  if(snapshot.data!['data'][index]['isPlayableCharacter'] == true){
-                    var name = snapshot.data!['data'][index]['displayName'];
-                    var icon = snapshot.data!['data'][index]['displayIcon'];
-                    var agent = snapshot.data!['data'][index];
-                    var roleAgent = snapshot.data!['data'][index]['role']['displayName'];
-                    var roleDescriptionAgent = snapshot.data!['data'][index]['role']['description'];
-                    var roleIconAgent = snapshot.data!['data'][index]['role']['displayIcon'];
-                    return GestureDetector(
-                      onTap: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
-                      },
-                      onLongPress: (){
-                        _preview(context, roleAgent, roleDescriptionAgent, roleIconAgent);
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: ListView.builder(
+                  itemCount: numAgents.length,
+                  itemBuilder: (context, index){
+                    if(snapshot.data!['data'][index]['isPlayableCharacter'] == true){
+                      var name = snapshot.data!['data'][index]['displayName'];
+                      var icon = snapshot.data!['data'][index]['displayIcon'];
+                      var agent = snapshot.data!['data'][index];
+                      var roleAgent = snapshot.data!['data'][index]['role']['displayName'];
+                      var roleDescriptionAgent = snapshot.data!['data'][index]['role']['description'];
+                      var roleIconAgent = snapshot.data!['data'][index]['role']['displayIcon'];
+                      return GestureDetector(
+                        onTap: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => agentPage(agent: agent)));
                         },
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(360)),
-                            child: Image(
-                                image: CachedNetworkImageProvider(
-                                  icon,
-                                  maxWidth: 256,
-                                  maxHeight: 256,
-                                )
+                        onLongPress: (){
+                          _preview(context, roleAgent, roleDescriptionAgent, roleIconAgent);
+                        },
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(360)),
+                              child: Image(
+                                  image: CachedNetworkImageProvider(
+                                    icon,
+                                    maxWidth: 256,
+                                    maxHeight: 256,
+                                  )
+                              ),
                             ),
-                          ),
-                          subtitleStyle(name),
-                        ],
-                      ),
-                    );
-                  }else{
-                    return Container();
-                  }
-                });
+                            subtitleStyle(name),
+                          ],
+                        ),
+                      );
+                    }else{
+                      return Container();
+                    }
+                  }),
+            );
           }
           /*
           ListTile(

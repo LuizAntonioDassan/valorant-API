@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:valorant/model/provider/provider.dart';
 import 'view/homepage.dart';
 
 void main(){
-  runApp(const MaterialApp(
-    home: homePage(),
-    debugShowCheckedModeBanner: false,
+  runApp(ChangeNotifierProvider(
+    create: (context) => FavoriteProvider(),
+    child: MaterialApp(
+      home: homePage(),
+      debugShowCheckedModeBanner: false,
+    ),
   ));
 }
 

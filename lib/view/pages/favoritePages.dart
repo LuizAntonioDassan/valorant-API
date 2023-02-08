@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant/model/provider/provider.dart';
-import 'package:valorant/view/pages/favoritePages.dart';
 
 import '../styles/textstyle/textStyle.dart';
-
-class weaponPage extends StatelessWidget {
-  final Map<String, dynamic> weapon;
-
-  const weaponPage({Key? key, required this.weapon}) : super(key: key);
+class favoritePage extends StatelessWidget {
+  const favoritePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<dynamic> skins = weapon['skins'];
     final provider = Provider.of<FavoriteProvider>(context);
-
+    final skins = provider.skins;
+    final skinsName = provider.skinsName;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          weapon['displayName'],
+          "Favorites",
           style: TextStyle(
             fontSize: 30,
           ),
@@ -33,47 +29,36 @@ class weaponPage extends StatelessWidget {
         child: ListView.builder(
             itemCount: skins.length,
             itemBuilder: (context, index) {
-              var name = weapon['skins'][index]['displayName'];
-              var icon = weapon['skins'][index]['displayIcon'];
-              var contentTier = weapon['skins'][index]['contentTierUuid'];
-              if (icon != null) {
-                if (contentTier != null) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(right: 16),
-                          alignment: Alignment.topRight,
-                          child: IconButton(
-                            onPressed: (){
-                              provider.toggleFavorite(icon, name);
-                            },
-                            icon: provider.ifExist(icon)
-                              ? Icon(Icons.favorite, color: Colors.red,)
-                              : Icon(Icons.favorite_border, color: Colors.red,),
-                          )
+                            margin: EdgeInsets.only(right: 16),
+                            alignment: Alignment.topRight,
+                            child: IconButton(
+                              onPressed: (){
+                                provider.toggleFavorite(skins[index],skinsName[index]);
+                              },
+                              icon: provider.ifExist(skins[index])
+                                  ? Icon(Icons.favorite, color: Colors.red,)
+                                  : Icon(Icons.favorite_border, color: Colors.red,),
+                            )
                         ),
                         Image.network(
-                          icon,
+                          skins[index],
                           height: 200,
                         ),
                         Container(
                           child: Center(
-                            child: subtitleStyle(name),
+                            child: subtitleStyle(skinsName[index]),
                           ),
                         )
                       ],
                     ),
                   );
-                } else {
-                  return Container();
-                }
-              } else {
-                return Container();
-              }
             }),
       ),
-    );
+    );;
   }
 }

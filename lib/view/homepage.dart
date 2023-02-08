@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:valorant/view/lists/mapList.dart';
 import 'package:valorant/view/lists/listAgent.dart';
 import 'package:valorant/view/lists/weaponsList.dart';
+import 'package:valorant/view/pages/favoritePages.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -46,7 +47,13 @@ class _homePageState extends State<homePage> with SingleTickerProviderStateMixin
               Center(child: mapList(),),
             ],
           ),
-        )
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> favoritePage()));
+            },
+            backgroundColor: Colors.red,
+            label: Text("Favorite Skins")),
       ),
     );
   }

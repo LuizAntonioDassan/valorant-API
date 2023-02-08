@@ -4,6 +4,8 @@ import 'package:valorant/model/api/api.dart';
 import 'package:valorant/view/pages/weaponPage.dart';
 import 'package:valorant/view/styles/textstyle/textStyle.dart';
 
+import '../pages/favoritePages.dart';
+
 class weaponsList extends StatefulWidget {
   const weaponsList({Key? key}) : super(key: key);
 
@@ -53,7 +55,6 @@ class _weaponsListState extends State<weaponsList> with SingleTickerProviderStat
           }
         });
   }
-
   Future<Map> _getWeapon() async {
     final value = Api.getData("https://valorant-api.com/v1/weapons");
     return value;
