@@ -2,24 +2,27 @@
 
 <h3> Acompanhe os Agentes do Jogo </h3>
 
-![agents](https://user-images.githubusercontent.com/94642889/214122211-74ded64f-38a4-4457-926e-130810c4f399.png)
+![Screenshot_4](https://user-images.githubusercontent.com/94642889/217898091-df89a8b5-37b9-40af-891c-8245f7195b8b.png)
 
 <h3> Historia , Posição , Habilidades </h3>
 
-![historia,role,habilidades](https://user-images.githubusercontent.com/94642889/214122343-a6aa85c8-e7aa-466e-9d0b-5468e22b27f4.png)
+![Screenshot_8](https://user-images.githubusercontent.com/94642889/217898318-b3b11188-0b16-4c92-94b2-ba40e7ddeb81.png)
 
 <h3> Armas </h3>
 
-![guns](https://user-images.githubusercontent.com/94642889/214122375-4e7d025d-8a01-4d09-9a25-a077e3b7c661.png)
+![Screenshot_9](https://user-images.githubusercontent.com/94642889/217898439-d570fcab-6dde-496f-801f-f7b1006d7016.png)
 
 <h3> Skins </h3>
 
-![skins](https://user-images.githubusercontent.com/94642889/214122390-ae3c5664-c78b-444f-95ea-1f9a8936cacd.png)
+![Screenshot_10](https://user-images.githubusercontent.com/94642889/217898541-f28d02f1-2e30-4811-bff4-c7c990780324.png)
 
 <h3> Mapas </h3>
 
-![mapas](https://user-images.githubusercontent.com/94642889/214122397-c0b693cc-3c6a-491e-b6ed-99756d3b527c.png)
+![Screenshot_7](https://user-images.githubusercontent.com/94642889/217898574-72948401-2553-432d-a313-91fbef48284a.png)
 
+<h3> Favoritos </h3>
+
+![Screenshot_6](https://user-images.githubusercontent.com/94642889/217898653-26402b16-79ea-4837-81de-31d46fd8b46a.png)
 
 
 *Aplicativo feito para consumir a API do valorant para fins educacionais*
