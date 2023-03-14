@@ -48,12 +48,6 @@ class _homePageState extends State<homePage> with SingleTickerProviderStateMixin
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton.extended(
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> favoritePage()));
-            },
-            backgroundColor: Colors.red,
-            label: Text("Favorite Skins")),
       ),
     );
   }

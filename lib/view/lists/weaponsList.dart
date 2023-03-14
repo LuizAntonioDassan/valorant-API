@@ -17,43 +17,52 @@ class _weaponsListState extends State<weaponsList> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: _getWeapon(),
-        builder: (context, snapshot){
-          if(snapshot.hasError){
-            return Center(
-              child: Text("Error"),
-            );
-          }
-          if(snapshot.hasData){
-            return ListView.builder(
-                itemCount: 18,
-                itemBuilder: (context, index){
-                  var icon = snapshot.data!['data'][index]["displayIcon"];
-                  var name = snapshot.data!['data'][index]["displayName"];
-                  var weapon = snapshot.data!['data'][index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: ListTile(
-                      title: Image(
-                        image: CachedNetworkImageProvider(
-                          icon,
-                          maxWidth: 512,
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: FutureBuilder(
+          future: _getWeapon(),
+          builder: (context, snapshot){
+            if(snapshot.hasError){
+              return Center(
+                child: Text("Error"),
+              );
+            }
+            if(snapshot.hasData){
+              return ListView.builder(
+                  itemCount: 18,
+                  itemBuilder: (context, index){
+                    var icon = snapshot.data!['data'][index]["displayIcon"];
+                    var name = snapshot.data!['data'][index]["displayName"];
+                    var weapon = snapshot.data!['data'][index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: ListTile(
+                        title: Image(
+                          image: CachedNetworkImageProvider(
+                            icon,
+                            maxWidth: 512,
+                          ),
                         ),
+                        subtitle: subtitleStyle(name),
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => weaponPage(weapon: weapon)));
+                        },
                       ),
-                      subtitle: subtitleStyle(name),
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => weaponPage(weapon: weapon)));
-                      },
-                    ),
-                  );
-                }
-            );
-          }
-          else{
-            return CircularProgressIndicator();
-          }
-        });
+                    );
+                  }
+              );
+            }
+            else{
+              return CircularProgressIndicator();
+            }
+          }),
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> favoritePage()));
+          },
+          backgroundColor: Colors.red,
+          label: Text("Favorite Skins")),
+    );
   }
   Future<Map> _getWeapon() async {
     final value = Api.getData("https://valorant-api.com/v1/weapons");
